@@ -12,6 +12,7 @@ namespace Link2link
         public Main_Form()
         {
             InitializeComponent();
+            // Páginas teste
             pFrom.Text = "https://en.wikipedia.org/wiki/Pressure_suit";
             pTo.Text = "https://en.wikipedia.org/wiki/Evenk_Autonomous_Okrug";
         }
@@ -19,14 +20,14 @@ namespace Link2link
         private void Button1_Click(object sender, EventArgs e)
         {
             WebClient w = new WebClient();
-            Boolean found = false;
+            Boolean found = false;      // Determina se a página final já foi encontrada ou não
             string html = "";
             int index = 0;      // Indice do hashmap
 
             try
             {
                 html = w.DownloadString(pFrom.Text);        // Testa se o link na página inicial é válido
-                if (!pFrom.Text.StartsWith("https://en.wikipedia.org/"))
+                if (!pFrom.Text.StartsWith("https://en.wikipedia.org/"))        // Testa se o link é da wikipedia em ingles
                     throw new NotWikiException("Não é uma página wiki em Inglês.");
             }
             catch(Exception err)
@@ -37,8 +38,8 @@ namespace Link2link
 
             try
             {
-                w.DownloadString(pTo.Text);        // Testa se o link na página inicial é válido
-                if (!pTo.Text.StartsWith("https://en.wikipedia.org/"))
+                w.DownloadString(pTo.Text);        // Testa se o link na página final é válido
+                if (!pTo.Text.StartsWith("https://en.wikipedia.org/"))      // Testa se o link é da wikipedia em ingles
                     throw new NotWikiException("Não é uma página wiki em Inglês.");
             }
             catch (Exception err)
@@ -54,7 +55,7 @@ namespace Link2link
 
             Page initial = new Page(pFrom.Text, null);      // Cria página inicial
             initial.SetLinks();
-            Page final = new Page(pTo.Text, null);
+            Page final = new Page(pTo.Text, null);          // Cria página final
 
             Dictionary<string, int> hash_map = new Dictionary<string, int>();       // Cria hashmap que serve pra verificar se página já foi descoberta e/ou visitada antes
             hash_map.Add(pFrom.Text, index++);        // Adiciona a página inicial no hashmap
@@ -74,11 +75,12 @@ namespace Link2link
                 current_pages.Add(page);
             }
 
+            // Busca em Largura
             while(!found)
             {
+                next_pages = new List<Page>();
                 foreach (Page page in current_pages)
                 {
-                    next_pages = new List<Page>();
                     if (!hash_map.TryGetValue(page.Url, out value))
                     {
                         page.SetLinks();
@@ -117,6 +119,7 @@ namespace Link2link
             result_label.Text = count.ToString() + "    CLIQUES \nentre os dois links \né o menor caminho.";
         }
 
+        // Excessão 
         public class NotWikiException : Exception
         {
             public NotWikiException()
