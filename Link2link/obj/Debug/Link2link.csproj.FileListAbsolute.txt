@@ -1,0 +1,9 @@
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.csprojAssemblyReference.cache
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.Main_Form.resources
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.csproj.GenerateResource.cache
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.csproj.CoreCompileInputs.cache
+D:\Documents\repos\Link2link\Link2link\bin\Debug\Link2link.exe.config
+D:\Documents\repos\Link2link\Link2link\bin\Debug\Link2link.exe
+D:\Documents\repos\Link2link\Link2link\bin\Debug\Link2link.pdb
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.exe
+D:\Documents\repos\Link2link\Link2link\obj\Debug\Link2link.pdb
